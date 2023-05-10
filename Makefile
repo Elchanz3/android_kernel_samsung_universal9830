@@ -451,6 +451,11 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Wno-format-security \
 		   -std=gnu89
+ifeq ($(cc-name),clang)
+KBUILD_CFLAGS	+= -mcpu=cortex-a55 -mtune=cortex-a55 
+else
+KBUILD_CFLAGS	+= -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55 -mcpu=exynos-m5 -mtune=exynos-m5
+endif
 KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
