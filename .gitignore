@@ -154,3 +154,7 @@ zImage
 Image
 out/
 /toolchain
+
+# KSU
+drivers/kernelsu
+
