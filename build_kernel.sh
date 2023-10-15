@@ -7,11 +7,11 @@ export PLATFORM_VERSION=11
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=13
 
 BUILD_CROSS_COMPILE=/home/chanz22/Documentos/toolchians/gcc-7.4.1/linaro/bin/aarch64-linux-gnu-
-KERNEL_LLVM_BIN=/home/chanz22/Documentos/toolchians/clangs/clang-r450784e/bin/clang
+KERNEL_LLVM_BIN=/home/chanz22/Documentos/toolchians/clang-r377782d/bin/clang
 CLANG_TRIPLE=aarch64-linux-gnu-
 KERNEL_MAKE_ENV="CONFIG_BUILD_ARM64_DT_OVERLAY=y"
 
-make O=out ARCH=arm64 CC=$KERNEL_LLVM_BIN exynos9830-c1s_defconfig
+make O=out ARCH=arm64 CC=$KERNEL_LLVM_BIN exynos9830-c1sxxx_defconfig
 make O=out ARCH=arm64 \
 	CROSS_COMPILE=$BUILD_CROSS_COMPILE CC=$KERNEL_LLVM_BIN \
 	CLANG_TRIPLE=$CLANG_TRIPLE -j12
