@@ -125,6 +125,11 @@ CONFIG_NET_UDP_TUNNEL=y
 # CONFIG_GENEVE is not set
 # CONFIG_GTP is not set
 
+## BATTERY SAVER
+CONFIG_BATTERY_SAVER=y
+
+CONFIG_DEBUG_SECTION_MISMATCH=y
+
 
 #
 # Automatically generated file; DO NOT EDIT.
