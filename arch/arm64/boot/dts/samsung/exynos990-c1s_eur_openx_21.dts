@@ -8264,7 +8264,7 @@
 				enable_irq_affinity_boost = <0x01>;
 				tp_irq_affinity_threshold = <0x1f4>;
 				tp_irq_affinity_cpu = <0x00 0x05>;
-				enable_mif_boost = <0x00>;
+				enable_mif_boost = <0x01>;
 				enable_pci_low_power_boost = <0x01>;
 				tp_pci_low_power_threshold = <0x32>;
 				tp_pci_low_power_enable = <0x01 0x00>;
