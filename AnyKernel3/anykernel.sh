@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Kernel for Galaxy Note 20 (Exynos) by Snapdragon teaks @ xda-developers
+kernel.string=PuppyKernel for Galaxy Note 20 (Exynos) by Snapdragon teaks @ xda-developers
 do.devicecheck=1
 do.modules=0
 do.systemless=1
@@ -41,3 +41,5 @@ dump_boot;
 
 write_boot;
 ## end boot install
+
+ui_print "thank you for using PuppyKernel"
