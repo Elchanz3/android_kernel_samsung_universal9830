@@ -39,6 +39,7 @@
 #include <linux/wakelock.h>
 #include <linux/workqueue.h>
 #include <linux/power_supply.h>
+#include <linux/proc_fs.h>
 
 #if defined(CONFIG_SAMSUNG_TUI)
 #include <linux/input/stui_inf.h>
@@ -958,7 +959,6 @@ struct sec_ts_data {
 	int skipped_mode;
 	
 	u8 lp_sensitivity;
-	u8 low_sensitivity_mode;
 
 	u8 fod_vi_tx;
 	u8 fod_vi_rx;
