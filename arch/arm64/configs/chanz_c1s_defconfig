@@ -108,6 +108,9 @@ CONFIG_NTFS_FS=y
 # CONFIG_NTFS_DEBUG is not set
 CONFIG_NTFS_RW=y
 
+## BLK_DEV_LOOP_MIN_COUNT -fix mount in TWRP
+CONFIG_BLK_DEV_LOOP_MIN_COUNT=32
+
 
 #
 # Automatically generated file; DO NOT EDIT.
