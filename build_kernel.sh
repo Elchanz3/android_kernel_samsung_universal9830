@@ -1,5 +1,7 @@
 #!/bin/bash
 
+make mrproper
+
 mkdir out
 
 DTB_DIR=$(pwd)/out/arch/arm64/boot/dts
@@ -9,9 +11,9 @@ export PLATFORM_VERSION=11
 
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=13
 
-BUILD_CROSS_COMPILE=/home/chanz22/Documentos/toolchians/gcc-7.4.1/linaro/bin/aarch64-linux-gnu-
-KERNEL_LLVM_BIN=/home/chanz22/Documentos/toolchians/clang-r377782d/bin/clang
-CLANG_TRIPLE=aarch64-linux-gnu-
+BUILD_CROSS_COMPILE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
+KERNEL_LLVM_BIN=/home/chanz22/Vídeos/Clang-18.0.0-20231014/bin/clang
+CLANG_TRIPLE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
 KERNEL_MAKE_ENV="CONFIG_BUILD_ARM64_DT_OVERLAY=y"
 
 make O=out ARCH=arm64 CC=$KERNEL_LLVM_BIN exynos9830-c1sxxx_defconfig
