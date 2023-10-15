@@ -12,7 +12,7 @@ export PLATFORM_VERSION=11
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=13
 
 BUILD_CROSS_COMPILE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
-KERNEL_LLVM_BIN=/home/chanz22/Vídeos/Clang-18.0.0-20231014/bin/clang
+KERNEL_LLVM_BIN=/home/chanz22/Documentos/toolchians/clang-r377782d/bin/clang
 CLANG_TRIPLE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
 KERNEL_MAKE_ENV="CONFIG_BUILD_ARM64_DT_OVERLAY=y"
 
