@@ -144,3 +144,10 @@ scripts/fmp/__pycache__/
 zImage
 *.zip
 
+# Puppy
+
+*dtb
+*.zip
+Image
+out/
+/toolchain
