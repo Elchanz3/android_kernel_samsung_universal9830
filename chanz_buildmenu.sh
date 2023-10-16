@@ -83,8 +83,6 @@ build_kernel(){
 	CLANG_TRIPLE=$CLANG_TRIPLE -j$(nproc) 2>&1 |tee ../$LOG_FILE
 
   [ -e $OUT_DIR/arch/arm64/boot/Image.gz ] && cp $OUT_DIR/arch/arm64/boot/Image.gz $OUT_DIR/Image.gz
-  if [ -e $OUT_DIR/arch/arm64/boot/Image.gz-dtb ]; then
-    cp $OUT_DIR/arch/arm64/boot/Image.gz-dtb $OUT_DIR/Image.gz-dtb
     
     DATE_END=$(date +"%s")
     DIFF=$(($DATE_END - $DATE_START))
