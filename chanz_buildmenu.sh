@@ -14,11 +14,11 @@ export PLATFORM_VERSION=11
 
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=13
 
-# just some definitions
 BUILD_CROSS_COMPILE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
 KERNEL_LLVM_BIN=/home/chanz22/Documentos/toolchians/clangs/clang-r450784e/bin/clang
 CLANG_TRIPLE=/home/chanz22/Vídeos/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-
-ZIPV=v1.1
+KERNEL_MAKE_ENV="LOCALVERSION=-PuppyKernel-v1.0-n20"
+KERNEL_ZIP_VERSION=Puppykernel-v1.0-N981B
 
 # LOG FILE NAME
 LOG_FILE=compilation-Puppy.log
@@ -70,23 +70,30 @@ clean(){
   pause 'continue'
  }
 
-build_kernel() {
-  echo "***** Compiling kernel, please wait... *****"
-  [ ! -d "$OUT_DIR" ] && mkdir "$OUT_DIR"
-  make -j$(nproc) -C "$(pwd)" O="$(pwd)/out" "$KERNEL_MAKE_ENV" ARCH=arm64 CROSS_COMPILE="$BUILD_CROSS_COMPILE" chanz_"$VARIANT"_defconfig
-
+build_kernel(){
+  variant
+  echo "${ON_BLUE}***** Compiling kernel just wait... *****${STD}"
+  [ ! -d "$OUT_DIR" ] && mkdir $OUT_DIR
+  make -j$(nproc) -C $(pwd) O=$(pwd)/out $KERNEL_MAKE_ENV ARCH=arm64 CROSS_COMPILE=$BUILD_CROSS_COMPILE chanz_${VARIANT}_defconfig
+  
   DATE_START=$(date +"%s")
+  
+  make O=out ARCH=arm64 \
+	CROSS_COMPILE=$BUILD_CROSS_COMPILE CC=$KERNEL_LLVM_BIN \
+	CLANG_TRIPLE=$CLANG_TRIPLE -j$(nproc) 2>&1 |tee ../$LOG_FILE
 
-  make O=out ARCH=arm64 CROSS_COMPILE="$BUILD_CROSS_COMPILE" CC="$KERNEL_LLVM_BIN" CLANG_TRIPLE="$CLANG_TRIPLE" -j$(nproc) 2>&1 | tee "../$LOG_FILE"
+  [ -e $OUT_DIR/arch/arm64/boot/Image.gz ] && cp $OUT_DIR/arch/arm64/boot/Image.gz $OUT_DIR/Image.gz
+    
+    DATE_END=$(date +"%s")
+    DIFF=$(($DATE_END - $DATE_START))
 
-  [ -e "$OUT_DIR/arch/arm64/boot/Image.gz" ] && cp "$OUT_DIR/arch/arm64/boot/Image.gz" "$OUT_DIR/Image.gz"
-  DATE_END=$(date +"%s")
-  DIFF=$(($DATE_END - $DATE_START))
+echo "Time wasted: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 
-  echo "Time elapsed: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
-
-  echo "***** Ready to use! *****"
-  pause 'continue'
+    echo "${BGREEN}***** Ready to Roar! *****${STD}"
+    pause 'continue'
+  else
+    pause 'return to Main menu' 'Kernel STUCK in BUILD! E2: check if theres an error, '
+  fi
 }
 
 anykernel3(){
@@ -101,7 +108,7 @@ if [[ -f "$IMAGE" ]]; then
 	mv out/dtb.img AnyKernel3/dtb
 	mv $IMAGE AnyKernel3/zImage
 	cd AnyKernel3
-	zip -r9 PuppyKernel-$ZIPV-N981B.zip .
+	zip -r9 Kernel-N981B2.zip .
     pause 'continue'
   else
     pause 'return to Main menu' 'Build kernel first, '
