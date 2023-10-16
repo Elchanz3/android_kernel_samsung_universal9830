@@ -86,8 +86,6 @@ build_kernel(){
   if [ -e $OUT_DIR/arch/arm64/boot/Image.gz-dtb ]; then
     cp $OUT_DIR/arch/arm64/boot/Image.gz-dtb $OUT_DIR/Image.gz-dtb
     
-    $(pwd)/tools/mkdtimg cfg_create $(pwd)/out/dtb.img dt.configs/exynos9830.cfg -d ${DTB_DIR}/exynos
-    
     DATE_END=$(date +"%s")
     DIFF=$(($DATE_END - $DATE_START))
 
@@ -101,6 +99,8 @@ echo "Time wasted: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 }
 
 anykernel3(){
+
+$(pwd)/tools/mkdtimg cfg_create $(pwd)/out/dtb.img dt.configs/exynos9830.cfg -d ${DTB_DIR}/exynos
 
 IMAGE="out/arch/arm64/boot/Image"
 if [[ -f "$IMAGE" ]]; then
