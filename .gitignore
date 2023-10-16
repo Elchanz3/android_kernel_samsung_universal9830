@@ -150,11 +150,4 @@ zImage
 *.zip
 Image
 out/
-
-
-
-
-
-
-
-
+/toolchain
