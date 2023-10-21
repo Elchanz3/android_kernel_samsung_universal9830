@@ -129,7 +129,7 @@ toolchain
 # Show menu
 show_menus(){
   clear
-  echo "${BRED}Chanz22-SDM845-KERNEL-BUILD menu $menu_version${STD}"
+  echo "${BRED}Chanz22-Exynos990-KERNEL-BUILD menu $menu_version${STD}"
   echo " 1. ${UNDER_LINE}B${STD}uild kernel"
   echo " 2. ${UNDER_LINE}C${STD}lean"
   echo " 3. Make ${UNDER_LINE}f${STD}lashable zip"
