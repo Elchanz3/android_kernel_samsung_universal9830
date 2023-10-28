@@ -979,7 +979,7 @@
 			sound {
 				compatible = "samsung,picasso-prince";
 				clock-names = "xclkout";
-				clocks = <0xffffffff 0x385>;
+				clocks = <0xffffffff 0x3e9>;
 				MICBIAS1-supply = <0x0d>;
 				MICBIAS2-supply = <0x0e>;
 				MICBIAS3-supply = <0x0f>;
@@ -1992,7 +1992,7 @@
 
 				oscclk {
 					compatible = "samsung,exynos9830-oscclk";
-					clock-frequency = <0x18cba80>;
+					clock-frequency = <32000000>;
 				};
 			};
 
