@@ -120,8 +120,8 @@
 
 					BUCK1M {
 						regulator-name = "m_vdd_buck1";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -130,8 +130,8 @@
 
 					BUCK2M {
 						regulator-name = "m_vdd_buck2";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -140,8 +140,8 @@
 
 					BUCK3M {
 						regulator-name = "m_vdd_buck3";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -150,8 +150,8 @@
 
 					BUCK5M {
 						regulator-name = "m_vdd_buck5";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -160,8 +160,8 @@
 
 					BUCK6M {
 						regulator-name = "m_vdd_buck6";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x01>;
@@ -170,8 +170,8 @@
 
 					BUCK7M {
 						regulator-name = "m_vdd_buck7";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -180,8 +180,8 @@
 
 					BUCK8M {
 						regulator-name = "m_vdd_buck8";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x02>;
@@ -190,8 +190,8 @@
 
 					BUCK9M {
 						regulator-name = "m_vdd_buck9";
-						regulator-min-microvolt = <800000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0xc3500>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x03>;
@@ -200,8 +200,8 @@
 
 					BUCK10M {
 						regulator-name = "m_vdd_buck10";
-						regulator-min-microvolt = <800000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0xc3500>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x03>;
@@ -210,8 +210,8 @@
 
 					BUCK11M {
 						regulator-name = "m_vdd_buck11";
-						regulator-min-microvolt = <1100000>;
-						regulator-max-microvolt = <1500000>;
+						regulator-min-microvolt = <0x10c8e0>;
+						regulator-max-microvolt = <0x16e360>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x03>;
@@ -220,7 +220,7 @@
 
 					BUCK12M {
 						regulator-name = "m_vdd_buck12";
-						regulator-min-microvolt = <1750000>;
+						regulator-min-microvolt = <0x1ab3f0>;
 						regulator-max-microvolt = <0x20ce70>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
@@ -230,8 +230,8 @@
 
 					LDO1M {
 						regulator-name = "m_vdd_ldo1";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -240,8 +240,8 @@
 
 					LDO2M {
 						regulator-name = "vdd_proxy_led_3p3";
-						regulator-min-microvolt = <3300000>;
-						regulator-max-microvolt = <3300000>;
+						regulator-min-microvolt = <0x325aa0>;
+						regulator-max-microvolt = <0x325aa0>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-always-on;
 						regulator-initial-mode = <0x03>;
@@ -250,8 +250,8 @@
 
 					LDO3M {
 						regulator-name = "m_vdd_ldo3";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -260,8 +260,8 @@
 
 					LDO4M {
 						regulator-name = "m_vdd_ldo4";
-						regulator-min-microvolt = <1600000>;
-						regulator-max-microvolt = <1950000>;
+						regulator-min-microvolt = <0x186a00>;
+						regulator-max-microvolt = <0x1dc130>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -270,8 +270,8 @@
 
 					LDO5M {
 						regulator-name = "m_vdd_ldo5";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -280,8 +280,8 @@
 
 					LDO6M {
 						regulator-name = "m_vdd_ldo6";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -290,8 +290,8 @@
 
 					LDO9M {
 						regulator-name = "m_vdd_ldo9";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -300,8 +300,8 @@
 
 					LDO10M {
 						regulator-name = "m_vdd_ldo10";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -310,8 +310,8 @@
 
 					LDO11M {
 						regulator-name = "m_vdd_ldo11";
-						regulator-min-microvolt = <1600000>;
-						regulator-max-microvolt = <1950000>;
+						regulator-min-microvolt = <0x186a00>;
+						regulator-max-microvolt = <0x1dc130>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -320,8 +320,8 @@
 
 					LDO12M {
 						regulator-name = "m_vdd_ldo12";
-						regulator-min-microvolt = <1700000>;
-						regulator-max-microvolt = <3350000>;
+						regulator-min-microvolt = <0x19f0a0>;
+						regulator-max-microvolt = <0x331df0>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -330,8 +330,8 @@
 
 					LDO13M {
 						regulator-name = "m_vdd_ldo13";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <3350000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x331df0>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -340,8 +340,8 @@
 
 					LDO14M {
 						regulator-name = "m_vdd_ldo14";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <3350000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x331df0>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -350,8 +350,8 @@
 
 					LDO15M {
 						regulator-name = "vmmc";
-						regulator-min-microvolt = <2950000>;
-						regulator-max-microvolt = <2950000>;
+						regulator-min-microvolt = <0x2d0370>;
+						regulator-max-microvolt = <0x2d0370>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x8a>;
@@ -359,8 +359,8 @@
 
 					LDO16M {
 						regulator-name = "m_vdd_ldo16";
-						regulator-min-microvolt = <2500000>;
-						regulator-max-microvolt = <3300000>;
+						regulator-min-microvolt = <0x2625a0>;
+						regulator-max-microvolt = <0x325aa0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -369,8 +369,8 @@
 
 					LDO17M {
 						regulator-name = "VDD_UWB_RF_1P8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x8c>;
@@ -378,8 +378,8 @@
 
 					LDO18M {
 						regulator-name = "m_vdd_ldo18";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x02>;
 						phandle = <0x8d>;
@@ -387,8 +387,8 @@
 
 					LDO19M {
 						regulator-name = "VDD_BTP_1P8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x02>;
 						phandle = <0x8e>;
@@ -396,8 +396,8 @@
 
 					LDO21M {
 						regulator-name = "vdd_mcu_1p8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x8f>;
@@ -405,8 +405,8 @@
 
 					LDO22M {
 						regulator-name = "VDD_NFC_1P8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x90>;
@@ -414,8 +414,8 @@
 
 					LDO24M {
 						regulator-name = "VDD_GRIP_3P3";
-						regulator-min-microvolt = <3300000>;
-						regulator-max-microvolt = <3300000>;
+						regulator-min-microvolt = <0x325aa0>;
+						regulator-max-microvolt = <0x325aa0>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-always-on;
 						regulator-initial-mode = <0x03>;
@@ -425,8 +425,8 @@
 
 					LDO25M {
 						regulator-name = "VDD_UWB_1P8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x92>;
@@ -434,8 +434,8 @@
 
 					LDO26M {
 						regulator-name = "m_vdd_ldo26";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
 						phandle = <0x45>;
@@ -443,8 +443,8 @@
 
 					LDO28M {
 						regulator-name = "VDD_ESE_SEN4";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-boot-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -483,8 +483,8 @@
 
 					BUCK1S {
 						regulator-name = "s_vdd_buck1";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x01>;
@@ -493,8 +493,8 @@
 
 					BUCK2S {
 						regulator-name = "s_vdd_buck2";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x01>;
@@ -503,8 +503,8 @@
 
 					BUCK3S {
 						regulator-name = "s_vdd_buck3";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x01>;
@@ -514,7 +514,7 @@
 					BUCK4S {
 						regulator-name = "s_vdd_buck4";
 						regulator-min-microvolt = <0xdbba0>;
-						regulator-max-microvolt = <1300000>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x1770>;
 						regulator-initial-mode = <0x03>;
@@ -523,8 +523,8 @@
 
 					LDO1S {
 						regulator-name = "s_vdd_ldo1";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -533,8 +533,8 @@
 
 					LDO2S {
 						regulator-name = "s_vdd_ldo2";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <950000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0xe7ef0>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -543,8 +543,8 @@
 
 					LDO3S {
 						regulator-name = "s_vdd_ldo3";
-						regulator-min-microvolt = <450000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x6ddd0>;
+						regulator-max-microvolt = <0x13d620>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
@@ -553,8 +553,8 @@
 
 					LDO4S {
 						regulator-name = "s_vdd_ldo4";
-						regulator-min-microvolt = <1600000>;
-						regulator-max-microvolt = <1950000>;
+						regulator-min-microvolt = <0x186a00>;
+						regulator-max-microvolt = <0x1dc130>;
 						regulator-always-on;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x03>;
@@ -563,8 +563,8 @@
 
 					LDO5S {
 						regulator-name = "s_vdd_ldo5";
-						regulator-min-microvolt = <700000>;
-						regulator-max-microvolt = <1100000>;
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x10c8e0>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
 						phandle = <0x9b>;
@@ -572,8 +572,8 @@
 
 					LDO6S {
 						regulator-name = "s_vdd_ldo6";
-						regulator-min-microvolt = <1600000>;
-						regulator-max-microvolt = <1950000>;
+						regulator-min-microvolt = <0x186a00>;
+						regulator-max-microvolt = <0x1dc130>;
 						regulator-ramp-delay = <0x2ee0>;
 						regulator-initial-mode = <0x01>;
 						phandle = <0x9c>;
@@ -602,15 +602,15 @@
 
 					s2mpb02-buck1 {
 						regulator-name = "S2MPB02_BUCK1";
-						regulator-min-microvolt = <1300000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x13d620>;
+						regulator-max-microvolt = <0x13d620>;
 						phandle = <0x9d>;
 					};
 
 					s2mpb02-buck2 {
 						regulator-name = "S2MPB02_BUCK2";
-						regulator-min-microvolt = <1300000>;
-						regulator-max-microvolt = <1300000>;
+						regulator-min-microvolt = <0x13d620>;
+						regulator-max-microvolt = <0x13d620>;
 						phandle = <0x9e>;
 					};
 
@@ -646,36 +646,36 @@
 
 					s2mpb02-ldo6 {
 						regulator-name = "VDDIO_1.8V_VT";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xa3>;
 					};
 
 					s2mpb02-ldo7 {
 						regulator-name = "VDDIO_1.8V_SUB";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xa4>;
 					};
 
 					s2mpb02-ldo8 {
 						regulator-name = "VDDIO_1.8V_WIDESUB";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xa5>;
 					};
 
 					s2mpb02-ldo10 {
 						regulator-name = "VDDD_1.8V_OIS";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xa6>;
 					};
 
 					s2mpb02-ldo11 {
 						regulator-name = "VDDA_2.95V_VT";
-						regulator-min-microvolt = <2950000>;
-						regulator-max-microvolt = <2950000>;
+						regulator-min-microvolt = <0x2d0370>;
+						regulator-max-microvolt = <0x2d0370>;
 						phandle = <0xa7>;
 					};
 
@@ -709,8 +709,8 @@
 
 					s2mpb02-ldo18 {
 						regulator-name = "VDD_FLICKER_1P8";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xac>;
 					};
 				};
@@ -771,7 +771,7 @@
 
 					s2dos05-ldo1 {
 						regulator-name = "vdd2";
-						regulator-min-microvolt = <1500000>;
+						regulator-min-microvolt = <0x16e360>;
 						regulator-max-microvolt = <0x1e8480>;
 						regulator-boot-on;
 						phandle = <0x3d>;
@@ -779,8 +779,8 @@
 
 					s2dos05-ldo2 {
 						regulator-name = "tsp_io";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						regulator-boot-on;
 						phandle = <0xad>;
 					};
@@ -843,15 +843,15 @@
 
 					s2mpb03-ldo3 {
 						regulator-name = "VDDIO_1.8V_CAM";
-						regulator-min-microvolt = <1800000>;
-						regulator-max-microvolt = <1800000>;
+						regulator-min-microvolt = <0x1b7740>;
+						regulator-max-microvolt = <0x1b7740>;
 						phandle = <0xb1>;
 					};
 
 					s2mpb03-ldo5 {
 						regulator-name = "VDDA_2.8V_CAM";
-						regulator-min-microvolt = <2950000>;
-						regulator-max-microvolt = <2950000>;
+						regulator-min-microvolt = <0x2d0370>;
+						regulator-max-microvolt = <0x2d0370>;
 						phandle = <0xb2>;
 					};
 
@@ -894,7 +894,7 @@
 				vdd_lldo2 {
 					regulator_name = "m_vdd_buck10";
 					suspend_volt = <0xdbba0>;
-					init_volt = <950000>;
+					init_volt = <0xe7ef0>;
 					volt_range_step = <0xf424>;
 				};
 
@@ -972,8 +972,8 @@
 			fixedregulator@1 {
 				compatible = "regulator-fixed";
 				regulator-name = "main_micbias_1p8";
-				regulator-min-microvolt = <1800000>;
-				regulator-max-microvolt = <1800000>;
+				regulator-min-microvolt = <0x1b7740>;
+				regulator-max-microvolt = <0x1b7740>;
 				gpio = <0xffffffff 0x01 0x00>;
 				enable-active-high;
 				vin-supply = <0x09>;
@@ -983,8 +983,8 @@
 			fixedregulator@2 {
 				compatible = "regulator-fixed";
 				regulator-name = "sub_micbias_1p8";
-				regulator-min-microvolt = <1800000>;
-				regulator-max-microvolt = <1800000>;
+				regulator-min-microvolt = <0x1b7740>;
+				regulator-max-microvolt = <0x1b7740>;
 				vin-supply = <0x0a>;
 				phandle = <0x10>;
 			};
@@ -992,8 +992,8 @@
 			fixedregulator@3 {
 				compatible = "regulator-fixed";
 				regulator-name = "3rd_micbias_1p8";
-				regulator-min-microvolt = <1800000>;
-				regulator-max-microvolt = <1800000>;
+				regulator-min-microvolt = <0x1b7740>;
+				regulator-max-microvolt = <0x1b7740>;
 				vin-supply = <0x0b>;
 				phandle = <0x11>;
 			};
@@ -2352,7 +2352,7 @@
 						qos,label = "LIT";
 						qos,delay_time = <0x09>;
 						qos,table_size = <0x0d>;
-						qos,table = <1950000 0x1c2af0 0x1a94b0 0x183350 0x163780 1300000 0x11a788 0x101148 0xe7b08 0xc4c70 0x9eb10 0x854d0 0x6be90>;
+						qos,table = <0x1dc130 0x1c2af0 0x1a94b0 0x183350 0x163780 0x13d620 0x11a788 0x101148 0xe7b08 0xc4c70 0x9eb10 0x854d0 0x6be90>;
 					};
 
 					cl1 {
@@ -2403,14 +2403,14 @@
 						level_1 {
 							threshold = <0x320>;
 							mid_min = <0x1cf610>;
-							lit_min = <1950000>;
+							lit_min = <0x1dc130>;
 							int = <0x82208>;
 						};
 
 						level_2 {
 							threshold = <0x460>;
 							mid_min = <0x1e8c50>;
-							lit_min = <1950000>;
+							lit_min = <0x1dc130>;
 							int = <0x82208>;
 						};
 					};
@@ -2475,13 +2475,13 @@
 						level_1 {
 							threshold = <0x96>;
 							mid_min = <0x156c60>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 						};
 
 						level_2 {
 							threshold = <0xc8>;
 							mid_min = <0x19c990>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 							mif = <0x14a140>;
 							int = <0x61a80>;
 							task_affinity = "enable";
@@ -2601,40 +2601,40 @@
 
 						level_1 {
 							threshold = <0x12c>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 						};
 
 						level_2 {
 							threshold = <0x1f4>;
 							mid_min = <0xce4c8>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 						};
 
 						level_3 {
 							threshold = <0x2bc>;
 							mid_min = <0x12a570>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 							mif = <0xf78f0>;
 						};
 
 						level_4 {
 							threshold = <0x320>;
 							mid_min = <0x12a570>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 							mif = <0xf78f0>;
 						};
 
 						level_5 {
 							threshold = <0x5dc>;
 							mid_min = <0x1702a0>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 							mif = <0xf78f0>;
 						};
 
 						level_6 {
 							threshold = <0x640>;
 							mid_min = <0x1702a0>;
-							lit_min = <1300000>;
+							lit_min = <0x13d620>;
 							mif = <0xf78f0>;
 						};
 					};
@@ -7783,14 +7783,14 @@
 
 				ddi-vdd3 {
 					regulator = <0x3d>;
-					def-voltage = <1800000>;
-					lpm-voltage = <1800000>;
+					def-voltage = <0x1b7740>;
+					lpm-voltage = <0x1b7740>;
 				};
 
 				ddr-vddr {
 					regulator = <0x3e>;
-					def-voltage = <1600000>;
-					lpm-voltage = <1600000>;
+					def-voltage = <0x186a00>;
+					lpm-voltage = <0x186a00>;
 				};
 			};
 
