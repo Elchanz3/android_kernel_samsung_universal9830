@@ -6751,7 +6751,7 @@
 				support_dex_mode;
 				enable_settings_aot;
 				support_ear_detect_mode;
-				sync-reportrate-120 = [59 00];
+				sync-reportrate-120 = [92 00];
 				support_fod;
 				support_open_short_test;
 				support_mis_calibration_test;
