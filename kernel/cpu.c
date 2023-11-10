@@ -1007,7 +1007,28 @@ static int cpu_down_maps_locked(unsigned int cpu, enum cpuhp_state target)
 
 static int do_cpu_down(unsigned int cpu, enum cpuhp_state target)
 {
+	struct cpumask newmask;
 	int err;
+
+	/*
+	 * When cpusets are enabled, the rebuilding of the scheduling
+	 * domains is deferred to a workqueue context. Make sure
+	 * that the work is completed before proceeding to the next
+	 * hotplug. Otherwise scheduler observes an inconsistent
+	 * view of online and offline CPUs in the root domain. If
+	 * the online CPUs are still stuck in the offline (default)
+	 * domain, those CPUs would not be visible when scheduling
+	 * happens on from other CPUs in the root domain.
+	 */
+	preempt_disable();
+	cpumask_andnot(&newmask, cpu_online_mask, cpumask_of(cpu));
+	preempt_enable();
+
+	/* One big cluster CPU and one little cluster CPU must remain online */
+	if (!cpumask_intersects(&newmask, cpu_prime_mask) ||
+		!cpumask_intersects(&newmask, cpu_perf_mask) ||
+		!cpumask_intersects(&newmask, cpu_lp_mask))
+		return -EINVAL;
 
 	cpu_maps_update_begin();
 	err = cpu_down_maps_locked(cpu, target);
@@ -1175,6 +1196,7 @@ int freeze_secondary_cpus(int primary)
 	int cpu, error = 0;
 
 	cpu_maps_update_begin();
+	unaffine_perf_irqs();
 	if (!cpu_online(primary))
 		primary = cpumask_first(cpu_online_mask);
 	/*
@@ -1254,7 +1276,7 @@ void enable_nonboot_cpus(void)
 			pr_debug("CPU%d is up\n", cpu);
 			cpu_device = get_cpu_device(cpu);
 			if (!cpu_device)
-				pr_err("%s: failed to get cpu%d device\n",
+				pr_debug("%s: failed to get cpu%d device\n",
 				       __func__, cpu);
 			else
 				kobject_uevent(&cpu_device->kobj, KOBJ_ONLINE);
@@ -1266,6 +1288,7 @@ void enable_nonboot_cpus(void)
 	arch_enable_nonboot_cpus_end();
 
 	cpumask_clear(frozen_cpus);
+	reaffine_perf_irqs();
 out:
 	cpu_maps_update_done();
 }
@@ -2258,6 +2281,30 @@ EXPORT_SYMBOL(__cpu_present_mask);
 
 struct cpumask __cpu_active_mask __read_mostly;
 EXPORT_SYMBOL(__cpu_active_mask);
+
+#if CONFIG_LITTLE_CPU_MASK
+static const unsigned long lp_cpu_bits = CONFIG_LITTLE_CPU_MASK;
+const struct cpumask *const cpu_lp_mask = to_cpumask(&lp_cpu_bits);
+#else
+const struct cpumask *const cpu_lp_mask = cpu_possible_mask;
+#endif
+EXPORT_SYMBOL(cpu_lp_mask);
+
+#if CONFIG_BIG_CPU_MASK
+static const unsigned long perf_cpu_bits = CONFIG_BIG_CPU_MASK;
+const struct cpumask *const cpu_perf_mask = to_cpumask(&perf_cpu_bits);
+#else
+const struct cpumask *const cpu_perf_mask = cpu_possible_mask;
+#endif
+EXPORT_SYMBOL(cpu_perf_mask);
+
+#if CONFIG_PRIME_CPU_MASK
+static const unsigned long prime_cpu_bits = CONFIG_PRIME_CPU_MASK;
+const struct cpumask *const cpu_prime_mask = to_cpumask(&prime_cpu_bits);
+#else
+const struct cpumask *const cpu_prime_mask = cpu_possible_mask;
+#endif
+EXPORT_SYMBOL(cpu_prime_mask);
 
 void init_cpu_present(const struct cpumask *src)
 {

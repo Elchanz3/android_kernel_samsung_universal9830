@@ -979,7 +979,7 @@
 			sound {
 				compatible = "samsung,picasso-prince";
 				clock-names = "xclkout";
-				clocks = <0xffffffff 0x385>;
+				clocks = <0xffffffff 0x3e9>;
 				MICBIAS1-supply = <0x0d>;
 				MICBIAS2-supply = <0x0e>;
 				MICBIAS3-supply = <0x0f>;
@@ -1992,7 +1992,7 @@
 
 				oscclk {
 					compatible = "samsung,exynos9830-oscclk";
-					clock-frequency = <0x18cba80>;
+					clock-frequency = <32000000>;
 				};
 			};
 
@@ -6736,7 +6736,7 @@
 				support_dex_mode;
 				enable_settings_aot;
 				support_ear_detect_mode;
-				sync-reportrate-120 = [59 00];
+				sync-reportrate-120 = [92 00];
 				support_fod;
 				support_open_short_test;
 				support_mis_calibration_test;
@@ -8243,7 +8243,7 @@
 				enable_irq_affinity_boost = <0x01>;
 				tp_irq_affinity_threshold = <0x1f4>;
 				tp_irq_affinity_cpu = <0x00 0x05>;
-				enable_mif_boost = <0x00>;
+				enable_mif_boost = <0x01>;
 				enable_pci_low_power_boost = <0x01>;
 				tp_pci_low_power_threshold = <0x32>;
 				tp_pci_low_power_enable = <0x01 0x00>;
