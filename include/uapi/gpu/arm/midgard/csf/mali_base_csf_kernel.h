@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 /*
  *
- * (C) COPYRIGHT 2020-2022 ARM Limited. All rights reserved.
+ * (C) COPYRIGHT 2020-2023 ARM Limited. All rights reserved.
  *
  * This program is free software and is provided to you under the terms of the
  * GNU General Public License version 2 as published by the Free Software
@@ -48,7 +48,6 @@
 
 #define BASE_MEM_RESERVED_BIT_20 ((base_mem_alloc_flags)1 << 20)
 
-
 /* Must be FIXABLE memory: its GPU VA will be determined at a later point,
  * at which time it will be at a fixed GPU VA.
  */
@@ -61,8 +60,7 @@
 /* A mask of all the flags which are only valid for allocations within kbase,
  * and may not be passed from user space.
  */
-#define BASEP_MEM_FLAGS_KERNEL_ONLY \
-	(BASEP_MEM_PERMANENT_KERNEL_MAPPING | BASEP_MEM_NO_USER_FREE)
+#define BASEP_MEM_FLAGS_KERNEL_ONLY (BASEP_MEM_PERMANENT_KERNEL_MAPPING | BASEP_MEM_NO_USER_FREE)
 
 /* A mask of all currently reserved flags
  */
@@ -74,12 +72,9 @@
 #define BASEP_MEM_CSF_USER_IO_PAGES_HANDLE (48ul << LOCAL_PAGE_SHIFT)
 
 #define KBASE_CSF_NUM_USER_IO_PAGES_HANDLE \
-	((BASE_MEM_COOKIE_BASE - BASEP_MEM_CSF_USER_IO_PAGES_HANDLE) >> \
-	 LOCAL_PAGE_SHIFT)
+	((BASE_MEM_COOKIE_BASE - BASEP_MEM_CSF_USER_IO_PAGES_HANDLE) >> LOCAL_PAGE_SHIFT)
 
-/**
- * Valid set of just-in-time memory allocation flags
- */
+/* Valid set of just-in-time memory allocation flags */
 #define BASE_JIT_ALLOC_VALID_FLAGS ((__u8)0)
 
 /* flags for base context specific to CSF */
@@ -94,9 +89,8 @@
 /* Bitpattern describing the ::base_context_create_flags that can be
  * passed to base_context_init()
  */
-#define BASEP_CONTEXT_CREATE_ALLOWED_FLAGS \
-	(BASE_CONTEXT_CCTX_EMBEDDED | \
-	 BASE_CONTEXT_CSF_EVENT_THREAD | \
+#define BASEP_CONTEXT_CREATE_ALLOWED_FLAGS                            \
+	(BASE_CONTEXT_CCTX_EMBEDDED | BASE_CONTEXT_CSF_EVENT_THREAD | \
 	 BASEP_CONTEXT_CREATE_KERNEL_FLAGS)
 
 /* Flags for base tracepoint specific to CSF */
@@ -107,10 +101,9 @@
 /* Enable additional CSF Firmware side tracepoints */
 #define BASE_TLSTREAM_ENABLE_CSFFW_TRACEPOINTS (1 << 3)
 
-#define BASE_TLSTREAM_FLAGS_MASK (BASE_TLSTREAM_ENABLE_LATENCY_TRACEPOINTS | \
-		BASE_TLSTREAM_JOB_DUMPING_ENABLED | \
-		BASE_TLSTREAM_ENABLE_CSF_TRACEPOINTS | \
-		BASE_TLSTREAM_ENABLE_CSFFW_TRACEPOINTS)
+#define BASE_TLSTREAM_FLAGS_MASK                                                        \
+	(BASE_TLSTREAM_ENABLE_LATENCY_TRACEPOINTS | BASE_TLSTREAM_JOB_DUMPING_ENABLED | \
+	 BASE_TLSTREAM_ENABLE_CSF_TRACEPOINTS | BASE_TLSTREAM_ENABLE_CSFFW_TRACEPOINTS)
 
 /* Number of pages mapped into the process address space for a bound GPU
  * command queue. A pair of input/output pages and a Hw doorbell page
@@ -120,9 +113,21 @@
 
 #define BASE_QUEUE_MAX_PRIORITY (15U)
 
-/* CQS Sync object is an array of __u32 event_mem[2], error field index is 1 */
-#define BASEP_EVENT_VAL_INDEX (0U)
-#define BASEP_EVENT_ERR_INDEX (1U)
+/* Sync32 object fields definition */
+#define BASEP_EVENT32_VAL_OFFSET (0U)
+#define BASEP_EVENT32_ERR_OFFSET (4U)
+#define BASEP_EVENT32_SIZE_BYTES (8U)
+
+/* Sync64 object fields definition */
+#define BASEP_EVENT64_VAL_OFFSET (0U)
+#define BASEP_EVENT64_ERR_OFFSET (8U)
+#define BASEP_EVENT64_SIZE_BYTES (16U)
+
+/* Sync32 object alignment, equal to its size */
+#define BASEP_EVENT32_ALIGN_BYTES (8U)
+
+/* Sync64 object alignment, equal to its size */
+#define BASEP_EVENT64_ALIGN_BYTES (16U)
 
 /* The upper limit for number of objects that could be waited/set per command.
  * This limit is now enforced as internally the error inherit inputs are
@@ -134,6 +139,9 @@
 /* CSF CSI EXCEPTION_HANDLER_FLAGS */
 #define BASE_CSF_TILER_OOM_EXCEPTION_FLAG (1u << 0)
 #define BASE_CSF_EXCEPTION_HANDLER_FLAGS_MASK (BASE_CSF_TILER_OOM_EXCEPTION_FLAG)
+
+/* Initial value for LATEST_FLUSH register */
+#define POWER_DOWN_LATEST_FLUSH_VALUE ((uint32_t)1)
 
 /**
  * enum base_kcpu_command_type - Kernel CPU queue command type.
@@ -164,7 +172,7 @@ enum base_kcpu_command_type {
 	BASE_KCPU_COMMAND_TYPE_JIT_ALLOC,
 	BASE_KCPU_COMMAND_TYPE_JIT_FREE,
 	BASE_KCPU_COMMAND_TYPE_GROUP_SUSPEND,
-	BASE_KCPU_COMMAND_TYPE_ERROR_BARRIER
+	BASE_KCPU_COMMAND_TYPE_ERROR_BARRIER,
 };
 
 /**

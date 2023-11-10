@@ -221,10 +221,18 @@ static u32 gpupro_update_profile(int user) // 250 ms //
  ************************************************************************/
 static int register_export_fn(u32 *max_freq, u32 *min_freq, u32 *cur_freq)
 {
-	*max_freq = (unsigned long)gpu_dvfs_get_max_freq();
-	*min_freq = (unsigned long)gpu_dvfs_get_min_freq();
-	*cur_freq = (unsigned long)gpu_dvfs_get_cur_clock();
-	profiler.table_cnt = exynos_stats_get_gpu_table_size();
+	*max_freq = 905000;
+	*min_freq = 156000;
+	profiler.table_cnt =
+			905000;
+			832000;
+			800000;
+			702000;
+			572000;
+			455000;
+			377000;
+			260000;
+			156000;
 	// 2020
 	profiler.fc.time[ACTIVE] = exynos_stats_get_gpu_time_in_state();
 
@@ -232,7 +240,7 @@ static int register_export_fn(u32 *max_freq, u32 *min_freq, u32 *cur_freq)
 	//profiler.fc.time[ACTIVE] = get_time_inf_freq(ACTIVE); 
 	//profiler.fc.time[CLKOFF] = get_time_in_freq(CLKOFF);
 
-	return 0;
+	return 1;
 }
 
 static int parse_dt(struct device_node *dn)
