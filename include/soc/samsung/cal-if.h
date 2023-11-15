@@ -111,4 +111,7 @@ extern int cal_if_init(void *);
 #define cal_vclk_dbg_info(a)	do{} while(0);
 //extern void cal_vclk_dbg_info(unsigned int id);
 #endif
+
+ssize_t fvmap_print(char *buf, unsigned int dvfs_type);
+
 #endif
