@@ -876,7 +876,6 @@ s3c2410_get_wdt_drv_data(struct platform_device *pdev)
 	return variant;
 }
 
-#ifdef CONFIG_EXYNOS_SNAPSHOT_WATCHDOG_RESET
 int s3c2410wdt_set_emergency_stop(int index)
 {
 	struct s3c2410_wdt *wdt = s3c_wdt[index];
@@ -907,7 +906,6 @@ int s3c2410wdt_keepalive_emergency(bool reset, int index)
 	writel(wdt->count, wdt->reg_base + S3C2410_WTCNT);
 	return 0;
 }
-#endif
 
 static int s3c2410wdt_get_multistage_index(void)
 {
