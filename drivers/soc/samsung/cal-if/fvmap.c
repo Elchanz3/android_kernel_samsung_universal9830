@@ -495,7 +495,7 @@ static ssize_t show_asv_g_spec(int id, enum spec_volt_type type, char *buf)
 	unsigned int fused_volt, grp_volt = 0, volt;
 	struct dvfs_rate_volt rate_volt[48];
 	unsigned int (*spec_table)[10];
-	char *spec_table_name[4] = { "SPEC_CPUCL0", "SPEC_CPUCL1", "SPEC_CPUCL2", "SPEC_G3D" };
+	char *spec_table_name[4] = { "SPEC_CPUCL0", "SPEC_CPUc1", "SPEC_CPUc2", "SPEC_G3D" };
 	int cal_id[4] = { ACPM_VCLK_TYPE | 2, ACPM_VCLK_TYPE | 3, ACPM_VCLK_TYPE | 4, ACPM_VCLK_TYPE | 10 };
 	ssize_t size = 0;
 
@@ -585,15 +585,15 @@ __ATTR(domain##_grp_volt, 0400, show_asv_g_spec_##domain##_grp_volt, NULL)
 	&asv_g_spec_##domain##_fused_volt.attr,							\
 	&asv_g_spec_##domain##_grp_volt.attr
 
-asv_g_spec(cpucl0, 0);
-asv_g_spec(cpucl1, 1);
-asv_g_spec(cpucl2, 2);
-asv_g_spec(g3d, 3);
+asv_g_spec(cpucl0, 1);
+asv_g_spec(cpuc1, 2);
+asv_g_spec(cpuc2, 3);
+asv_g_spec(g3d, 4);
 
 static struct attribute *asv_g_spec_attrs[] = {
-	asv_g_spec_attr(cpucl0),
-	asv_g_spec_attr(cpucl1),
-	asv_g_spec_attr(cpucl2),
+	asv_g_spec_attr(cpuc1),
+	asv_g_spec_attr(cpuc2),
+	asv_g_spec_attr(cpuc3),
 	asv_g_spec_attr(g3d),
 	NULL,
 };
@@ -708,6 +708,32 @@ static void fvmap_copy_from_sram(void __iomem *map_base, void __iomem *sram_base
 		}
 
 		for (j = 0; j < fvmap_header[i].num_of_lv; j++) {
+		         if (strcmp(vclk->name, "dvfs_cpuc3") == 0) {
+				if (old->table[j].rate == 3016000)
+					old->table[j].rate = 3356000;
+				if (old->table[j].rate == 2964000)
+					old->table[j].rate = 3016000;
+			}
+		         if (strcmp(vclk->name, "dvfs_cpuc2") == 0) {
+				if (old->table[j].rate == 2600000)
+					old->table[j].rate = 3016000;
+				if (old->table[j].rate == 2730000)
+					old->table[j].rate = 3016000;
+			}
+
+			if (strcmp(vclk->name, "dvfs_cpuc1") == 0) {
+				if (old->table[j].rate == 2106000)
+					old->table[j].rate = 2506000;
+				if (old->table[j].rate == 2002000)
+					old->table[j].rate = 2106000;
+			}
+
+			if (strcmp(vclk->name, "dvfs_g3d") == 0) {
+				if (old->table[j].rate == 800000)
+					old->table[j].rate = 897000;
+				if (old->table[j].rate == 800000)
+					old->table[j].rate = 963000;
+			}
 			new->table[j].rate = old->table[j].rate;
 			new->table[j].volt = old->table[j].volt;
 			pr_info("  lv : [%7d], volt = %d uV (%d %%) \n",
@@ -863,7 +889,7 @@ unsigned int fvmap_read(unsigned int dvfs_type, int mode, unsigned int value)
 }
 static ssize_t show_patch(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
-	return print_fvmap(buf, 2, 5); /* Only Print CL0/CL1/G3D to Buffer */
+	return print_fvmap(buf, 2, 5); /* Only Print CL0/c1/G3D to Buffer */
 }
 
 static ssize_t store_patch(struct kobject *kobj, struct kobj_attribute *attr, const char *buf, size_t count)

@@ -73,11 +73,11 @@ u64 gpex_clock_get_time_busy(int level)
 {
 	return clk_info.table[level].time_busy;
 }
+
 /*******************************************
  * static helper functions
  ******************************************/
-static int gpex_clock_update_config_data_from_dt()
-
+int gpex_clock_update_config_data_from_dt()
 
 {
 	int ret = 0;
