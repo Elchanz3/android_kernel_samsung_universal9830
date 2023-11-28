@@ -5,7 +5,6 @@
 #include <linux/printk.h>
 #include <linux/rcupdate.h>
 #include <linux/slab.h>
-#include <linux/battery_saver.h>
 
 #include <trace/events/sched.h>
 
@@ -141,7 +140,7 @@ root_schedtune = {
  *    implementation especially for the computation of the per-CPU boost
  *    value
  */
-#define BOOSTGROUPS_COUNT 8     // default 5
+#define BOOSTGROUPS_COUNT 5
 
 /* Array of configured boostgroups */
 static struct schedtune *allocated_group[BOOSTGROUPS_COUNT] = {
@@ -513,7 +512,7 @@ int schedtune_task_group_idx(struct task_struct *p)
 	struct schedtune *st;
 	int group_idx;
 
-	if (!unlikely(schedtune_initialized) || is_battery_saver_on())
+	if (unlikely(!schedtune_initialized))
 		return 0;
 
 	/* Get task cgroup idx */
@@ -530,7 +529,7 @@ int schedtune_task_boost(struct task_struct *p)
 	struct schedtune *st;
 	int task_boost;
 
-	if (unlikely(!schedtune_initialized) || is_battery_saver_on())
+	if (unlikely(!schedtune_initialized))
 		return 0;
 
 	/* Get task boost value */
@@ -547,7 +546,7 @@ int schedtune_prefer_idle(struct task_struct *p)
 	struct schedtune *st;
 	int prefer_idle;
 
-	if (!unlikely(schedtune_initialized) || is_battery_saver_on())
+	if (unlikely(!schedtune_initialized))
 		return 0;
 
 	/* Get prefer_idle value */
@@ -563,9 +562,6 @@ static u64
 prefer_idle_read(struct cgroup_subsys_state *css, struct cftype *cft)
 {
 	struct schedtune *st = css_st(css);
-
-	if (is_battery_saver_on())
-		return 0;
 
 	return st->prefer_idle;
 }
@@ -585,9 +581,6 @@ prefer_perf_read(struct cgroup_subsys_state *css, struct cftype *cft)
 {
        struct schedtune *st = css_st(css);
 
-	   if (is_battery_saver_on())
-		   return 0;
-
        return st->prefer_perf;
 }
 
@@ -605,9 +598,6 @@ static s64
 boost_read(struct cgroup_subsys_state *css, struct cftype *cft)
 {
 	struct schedtune *st = css_st(css);
-
-	   if (is_battery_saver_on())
-		   return 0;
 
 	return st->boost;
 }

@@ -440,7 +440,7 @@ int blk_alloc_turbo_write(struct request_queue *q)
 
 	set_tw_state(new, TW_OFF);
 
-	new->up_threshold_bytes = (2 * 1024 * 1024);
+	new->up_threshold_bytes = (12 * 1024 * 1024);
 	new->up_threshold_rqs = 50;
 	new->down_threshold_bytes = (10 * 1024 * 1024);
 	new->down_threshold_rqs= 40;
@@ -800,9 +800,7 @@ inline void __blk_run_queue_uncond(struct request_queue *q)
 	 * can wait until all these request_fn calls have finished.
 	 */
 	q->request_fn_active++;
-        preempt_disable();
 	q->request_fn(q);
-        preempt_enable();
 	q->request_fn_active--;
 }
 EXPORT_SYMBOL_GPL(__blk_run_queue_uncond);

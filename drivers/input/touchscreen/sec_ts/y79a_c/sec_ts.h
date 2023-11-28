@@ -39,7 +39,6 @@
 #include <linux/wakelock.h>
 #include <linux/workqueue.h>
 #include <linux/power_supply.h>
-#include <linux/proc_fs.h>
 
 #if defined(CONFIG_SAMSUNG_TUI)
 #include <linux/input/stui_inf.h>
@@ -959,6 +958,7 @@ struct sec_ts_data {
 	int skipped_mode;
 	
 	u8 lp_sensitivity;
+	u8 low_sensitivity_mode;
 
 	u8 fod_vi_tx;
 	u8 fod_vi_rx;
@@ -1002,11 +1002,6 @@ struct sec_ts_data {
 	int (*sec_ts_i2c_read_bulk)(struct sec_ts_data *ts, u8 *data, int len);
 	int (*sec_ts_read_sponge)(struct sec_ts_data *ts, u8 *data, int len);
 	int (*sec_ts_write_sponge)(struct sec_ts_data *ts, u8 *data, int len);
-
-#ifdef CONFIG_FB
-	struct notifier_block fb_notif;
-#endif
-
 };
 
 struct sec_ts_plat_data {

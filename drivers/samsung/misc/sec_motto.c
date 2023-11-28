@@ -208,6 +208,9 @@ static void sec_motto_param_work(struct work_struct *work) {
 void store_act_upload_information(const char *buf, size_t count) {
 	printk("%s: ++\n", __func__);
 
+	if (sec_abc_get_enabled() == 0)
+		return;
+
 	if (count >= UPLOAD_INFORMATION_MAX_LEN) {
 		memcpy(sec_motto_param_data.buf, buf, UPLOAD_INFORMATION_MAX_LEN);
 		sec_motto_param_data.buf[UPLOAD_INFORMATION_MAX_LEN - 1] = '\0';

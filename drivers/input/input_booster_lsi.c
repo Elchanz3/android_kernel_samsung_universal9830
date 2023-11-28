@@ -57,7 +57,7 @@ void set_hmp(int enable) {
 	mutex_unlock(&input_lock);
 }
 
-void init_input_emstune(void) {
+void init_input_emstune() {
 	emstune_add_request(&emstune_req_input);
 }
 

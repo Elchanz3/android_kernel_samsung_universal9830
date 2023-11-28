@@ -73,12 +73,10 @@ u64 gpex_clock_get_time_busy(int level)
 {
 	return clk_info.table[level].time_busy;
 }
-
 /*******************************************
  * static helper functions
  ******************************************/
-int gpex_clock_update_config_data_from_dt()
-
+static int gpex_clock_update_config_data_from_dt()
 {
 	int ret = 0;
 	struct freq_volt *fv_array;
@@ -123,9 +121,7 @@ int gpex_clock_update_config_data_from_dt()
 
 	return 0;
 }
-/*******************************************
- * static helper functions
- ******************************************/
+
 static int set_clock_using_calapi(int clk)
 {
 	int ret = 0;

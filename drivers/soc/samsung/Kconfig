@@ -187,6 +187,13 @@ config EXYNOS_DVFS_MANAGER
 	  Enable DVFS Manager for Exynos SoC.
 	  This module controls constraint between each DVFS domains.
 
+config EXYNOS_OCP
+	bool "Exynos OCP Handler"
+	depends on CPU_FREQ
+	default n
+	help
+	  Enable OCP handler for Exynos SoC.
+
 config EXYNOS_MCINFO
 	bool "Exynos memory controller information"
 	default n

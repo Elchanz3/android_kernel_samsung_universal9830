@@ -31,9 +31,6 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 					  unsigned int cpu,
 					  const char *namefmt);
 
-void kthread_set_per_cpu(struct task_struct *k, int cpu);
-bool kthread_is_per_cpu(struct task_struct *k);
-
 /**
  * kthread_run - create and wake a thread.
  * @threadfn: the function to run until signal_pending(current).
@@ -49,40 +46,6 @@ bool kthread_is_per_cpu(struct task_struct *k);
 		= kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
 	if (!IS_ERR(__k))						   \
 		wake_up_process(__k);					   \
-	__k;								   \
-})
-
-/**
- * kthread_run_perf_critical - create and wake a performance-critical thread.
- *
- * Same as kthread_run(), but with the kthread bound to performance CPUs.
- */
-#define kthread_run_perf_critical(threadfn, data, namefmt, ...)		   \
-({									   \
-	struct task_struct *__k						   \
-		= kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
-	if (!IS_ERR(__k)) {						   \
-		__k->flags |= PF_PERF_CRITICAL;				   \
-		kthread_bind_mask(__k, cpu_prime_mask);			   \
-		wake_up_process(__k);					   \
-	}								   \
-	__k;								   \
-})
-
-/**
- * kthread_run_low_power - create and wake a low-power thread.
- *
- * Same as kthread_run(), but with the kthread bound to low-power CPUs.
- */
-#define kthread_run_low_power(threadfn, data, namefmt, ...)		   \
-({									   \
-	struct task_struct *__k						   \
-		= kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
-	if (!IS_ERR(__k)) {						   \
-		__k->flags |= PF_LOW_POWER;				   \
-		kthread_bind_mask(__k, cpu_lp_mask);			   \
-		wake_up_process(__k);					   \
-	}								   \
 	__k;								   \
 })
 

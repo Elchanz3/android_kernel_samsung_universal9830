@@ -11,7 +11,8 @@ UMH_RESTRICTION_ENABLE=true
 TRUSTED_MAP_ENABLE=false
 
 ifneq ($(wildcard $(srctree)/include/crypto/internal/rsa.h),)
-    # INTEGRITY_ENABLE=true
+    $(warning [DEFEX] INTEGRITY_ENABLE)
+    INTEGRITY_ENABLE=true
 endif
 
 # caches to enable
@@ -60,7 +61,7 @@ ifeq ($(CONFIG_DEFEX_KERNEL_ONLY), y)
     endif
 endif
 
-ifeq ($(CONFIG_SEC_FACTORY), y)
+ifeq ($(SEC_FACTORY_BUILD), true)
     DEFEX_DEFINES += -DDEFEX_FACTORY_ENABLE
 endif
 

@@ -26,15 +26,6 @@
 #define __visible_for_testing static
 #endif
 
-#include <linux/moduleparam.h>
-static int wl_polling = 10;
-module_param(wl_polling, int, 0644);
-
-static unsigned int STORE_MODE_CHARGING_MAX = 85;
-static unsigned int STORE_MODE_CHARGING_MIN = 50;
-module_param_named(store_mode_max, STORE_MODE_CHARGING_MAX, bool, 0644);
-module_param_named(store_mode_min, STORE_MODE_CHARGING_MIN, bool, 0644);
-
 bool sleep_mode = false;
 bool batt_boot_complete = false;
 
@@ -926,16 +917,37 @@ void sec_bat_check_lrp_temp(
 				*input_current = battery->pdata->lrp_curr[LRP_25W].st_icl[lrp_step - 1];
 				*charging_current = battery->pdata->lrp_curr[LRP_25W].st_fcc[lrp_step - 1];
 			} else {
-				if (*input_current > (60000 / battery->input_voltage))
-					*input_current = 60000 / battery->input_voltage;
+				if (lcd_sts) {
+					if (*input_current > (60000 / battery->input_voltage))
+						*input_current = 60000 / battery->input_voltage;
+				} else {
+					if (*input_current > battery->pdata->chg_input_limit_current)
+						*input_current = battery->pdata->chg_input_limit_current;
+					if (*charging_current > battery->pdata->chg_charging_limit_current)
+						*charging_current = battery->pdata->chg_charging_limit_current;
+				}
 			}
 		} else if (is_hv_wire_type(ct)) {
 			if (is_hv_wire_12v_type(battery->cable_type)) {
-				if (*input_current > battery->pdata->siop_hv_12v_input_limit_current)
-					*input_current = battery->pdata->siop_hv_12v_input_limit_current;
+				if (lcd_sts) {
+					if (*input_current > battery->pdata->siop_hv_12v_input_limit_current)
+						*input_current = battery->pdata->siop_hv_12v_input_limit_current;
+				} else {
+					if (*input_current > battery->pdata->chg_input_limit_current)
+						*input_current = battery->pdata->chg_input_limit_current;
+					if (*charging_current > battery->pdata->chg_charging_limit_current)
+						*charging_current = battery->pdata->chg_charging_limit_current;
+				}
 			} else {
-				if (*input_current > battery->pdata->siop_hv_input_limit_current)
-					*input_current = battery->pdata->siop_hv_input_limit_current;
+				if (lcd_sts) {
+					if (*input_current > battery->pdata->siop_hv_input_limit_current)
+						*input_current = battery->pdata->siop_hv_input_limit_current;
+				} else {
+					if (*input_current > battery->pdata->chg_input_limit_current)
+						*input_current = battery->pdata->chg_input_limit_current;
+					if (*charging_current > battery->pdata->chg_charging_limit_current)
+						*charging_current = battery->pdata->chg_charging_limit_current;
+				}
 			}
 		} else {
 			if (*input_current > battery->pdata->siop_input_limit_current)
@@ -2045,7 +2057,7 @@ static bool sec_bat_ovp_uvlo_result(
 			__func__, health);
 		battery->is_recharging = false;
 		battery->health_check_count = DEFAULT_HEALTH_CHECK_COUNT;
-		wake_lock_timeout(&battery->vbus_wake_lock, HZ * wl_polling);
+		wake_lock_timeout(&battery->vbus_wake_lock, HZ * 10);
 		/* Enable charging anyway to check actual DC's health */
 		val.intval = SEC_BAT_CHG_MODE_CHARGING_OFF;
 		psy_do_property(battery->pdata->charger_name, set,
@@ -2087,7 +2099,7 @@ static bool sec_bat_ovp_uvlo_result(
 #endif
 			/* Take the wakelock during 10 seconds
 			   when over-voltage status is detected	 */
-			wake_lock_timeout(&battery->vbus_wake_lock, HZ * wl_polling);
+			wake_lock_timeout(&battery->vbus_wake_lock, HZ * 10);
 			break;
 		}
 		power_supply_changed(battery->psy_bat);
@@ -3407,7 +3419,7 @@ static void sec_bat_do_fullcharged(struct sec_battery_info *battery, bool force_
 	 * activated wake lock in a few seconds
 	 */
 	if (battery->pdata->polling_type == SEC_BATTERY_MONITOR_ALARM)
-		wake_lock_timeout(&battery->vbus_wake_lock, HZ * wl_polling);
+		wake_lock_timeout(&battery->vbus_wake_lock, HZ * 10);
 }
 
 static bool sec_bat_fullcharged_check(struct sec_battery_info *battery) {
@@ -4778,7 +4790,7 @@ void sec_bat_fw_update_work(struct sec_battery_info *battery, int mode)
 
 	dev_info(battery->dev, "%s \n", __func__);
 
-	wake_lock_timeout(&battery->vbus_wake_lock, HZ * wl_polling);
+	wake_lock_timeout(&battery->vbus_wake_lock, HZ * 10);
 
 	switch (mode) {
 		case SEC_WIRELESS_RX_SDCARD_MODE:
@@ -5871,7 +5883,7 @@ __visible_for_testing void sec_bat_cable_work(struct work_struct *work)
 	 * if cable is connected and disconnected,
 	 * activated wake lock in a few seconds
 	 */
-	wake_lock_timeout(&battery->vbus_wake_lock, HZ * wl_polling);
+	wake_lock_timeout(&battery->vbus_wake_lock, HZ * 10);
 
 	if (is_nocharge_type(current_wire_status)) {
 		battery->prev_usb_conf = USB_CURRENT_NONE;

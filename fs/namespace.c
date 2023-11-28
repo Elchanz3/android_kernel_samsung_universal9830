@@ -1240,10 +1240,10 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 	}
 	if (flags & SB_KERNMOUNT)
 #ifdef CONFIG_KDP_NS
-	rkp_set_mnt_flags(mnt->mnt, MNT_INTERNAL);
-	root = mount_fs(type, flags, name, mnt->mnt, data);
+		rkp_set_mnt_flags(mnt->mnt, MNT_INTERNAL);
+		root = mount_fs(type, flags, name, mnt->mnt, data);
 #else
-	mnt->mnt.mnt_flags = MNT_INTERNAL;
+		mnt->mnt.mnt_flags = MNT_INTERNAL;
 
 	root = mount_fs(type, flags, name, &mnt->mnt, data);
 #endif
@@ -3325,9 +3325,9 @@ long do_mount(const char *dev_name, const char __user *dir_name,
 	if (retval)
 		goto dput_out;
 
-	/* Default to noatime unless overriden */
-	if (!(flags & MS_RELATIME))
-		mnt_flags |= MNT_NOATIME;
+	/* Default to relatime unless overriden */
+	if (!(flags & MS_NOATIME))
+		mnt_flags |= MNT_RELATIME;
 
 	/* Separate the per-mountpoint flags */
 	if (flags & MS_NOSUID)

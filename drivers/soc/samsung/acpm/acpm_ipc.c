@@ -30,9 +30,9 @@
 static struct acpm_ipc_info *acpm_ipc;
 static struct workqueue_struct *update_log_wq;
 static struct acpm_debug_info *acpm_debug;
-static bool is_acpm_stop_log = true;
+static bool is_acpm_stop_log = false;
 static bool acpm_stop_log_req = false;
-volatile struct acpm_framework *acpm_initdata;
+struct acpm_framework *acpm_initdata;
 void __iomem *acpm_srambase;
 static u32 acpm_period = APM_PERITIMER_NS_PERIOD;
 
@@ -560,6 +560,7 @@ int __acpm_ipc_send_data(unsigned int channel_id, struct ipc_config *cfg, bool w
 			pr_err("[ACPM IPC] sequence number full! error!!!\n");
 			BUG();
 		}
+
 	} while (channel->seq_num_flag[tmp_seq_num]);
 
 	channel->seq_num = tmp_seq_num;
