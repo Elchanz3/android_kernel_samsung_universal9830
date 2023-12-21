@@ -31,7 +31,7 @@ mkdir -p "$DTB_DIR" || error_exit "Failed to create directory $DTB_DIR"
 
 # Toolchains
 BUILD_CROSS_COMPILE="/home/chanz22/tc/aarch64-zyc-linux-gnu-14/bin/aarch64-zyc-linux-gnu-"
-KERNEL_LLVM_BIN="/home/chanz22/tc/Clang-14.0.6-20230207/bin/clang"
+KERNEL_LLVM_BIN="/home/chanz22/tc/SDClang-14/bin/clang"
 CLANG_TRIPLE="$BUILD_CROSS_COMPILE"
 
 # Cleaning (if -clean flag is provided)
